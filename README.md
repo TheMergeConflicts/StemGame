@@ -12,7 +12,16 @@
 
 ## USAGE
 
+### For Development only:
 
+1. To use UNITY 2D TILEMAPPER:
+> SETUP: In main menu of Unity, select tools->TilemapEditor. After creating a sprite tilemap by Unity's Sprite Editor,
+> you need to put the created tilemap to folder "Tilemaps". As for detailed usage, please visit the link below. 
+
+
+## TECHNOLOGY USED
+
+1. UNITY 2D TILEMAPPER by Kaisirak: https://www.youtube.com/watch?v=_x0bMTxP7Yw
 
 ## LICENSE
 
