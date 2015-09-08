@@ -17,7 +17,7 @@
 1. To use UNITY 2D TILEMAPPER:
 > SETUP: In main menu of Unity, select tools->TilemapEditor. After creating a sprite tilemap by Unity's Sprite Editor,
 > you need to put the created tilemap to folder "Tilemaps". As for detailed usage, please visit the link below. 
-
+> HINT: The grid size is best set as W: 0.7 H: 0.7 .
 
 ## TECHNOLOGY USED
 
