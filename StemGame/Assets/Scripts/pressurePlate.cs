@@ -4,11 +4,13 @@ using System.Collections;
 public class pressurePlate : MonoBehaviour {
 
 	private SpriteRenderer spriteR;
-	public Door door;
+	public GameObject doorObject; 
+	private Door door;
 
 	// Use this for initialization
 	void Start () {
 		spriteR = GetComponent<SpriteRenderer> ();
+		door = doorObject.GetComponent<Door> ();
 	}
 	
 	// Update is called once per frame
@@ -26,7 +28,14 @@ public class pressurePlate : MonoBehaviour {
 	}
 
 	void openDoor(){
-		door.open = true;
+		door.Open ();
 		spriteR.color = Color.green;
+	}
+
+	void OnDrawGizmos(){
+		if (doorObject != null) {
+			Gizmos.color = Color.red;
+			Gizmos.DrawLine (gameObject.transform.position, doorObject.transform.position);
+		}
 	}
 }
