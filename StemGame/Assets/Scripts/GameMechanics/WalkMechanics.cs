@@ -2,20 +2,53 @@
 using System.Collections;
 
 public class WalkMechanics : MonoBehaviour {
+	public const int NORTH = 0;
+	public const int SOUTH = 1;
+	public const int EAST = 2;
+	public const int WEST = 3;
+
 	public float speed = 5;
 	public float walkSmoothing = 5;
+	public int direction = NORTH;
 
 	private float horizontalInput;
 	private float verticalInput;
+	private GrabMechanics grabMechanics;
 	private Rigidbody2D rigid;
+
+
 
 	void Awake() {
 		rigid = GetComponent<Rigidbody2D> ();
+		grabMechanics = GetComponent<GrabMechanics> ();
 	}
 
 	void Update() {
 		updateMovement ();
+		updateDirection ();
 		updateRotation ();
+	}
+
+	void updateDirection() {
+		if (grabMechanics.getIsGrabbing ()) {
+			return;
+		}
+		if (Mathf.Abs (horizontalInput) > 0 && Mathf.Abs (verticalInput) == 0) {
+			if (horizontalInput < 0) {
+				direction = WEST;
+			}
+			else {
+				direction = EAST;
+			}
+		}
+
+		if (Mathf.Abs (verticalInput) > 0 && Mathf.Abs (horizontalInput) == 0) {
+			if (verticalInput < 0) {
+				direction = SOUTH;
+			} else {
+				direction = NORTH;
+			}
+		}
 	}
 
 
@@ -29,11 +62,25 @@ public class WalkMechanics : MonoBehaviour {
 	}
 
 	void updateRotation() {
-		if (Mathf.Abs (horizontalInput) < .05f && Mathf.Abs (verticalInput) < .05f) {
-			return;
+		switch (direction) {
+		case NORTH: 
+			transform.rotation = Quaternion.Euler(0, 0, 0);
+			break;
+
+		case SOUTH:
+			transform.rotation = Quaternion.Euler(0, 0, 180);
+			break;
+
+		case WEST:
+			transform.rotation = Quaternion.Euler(0, 0, 90);
+			break;
+
+		case EAST:
+			transform.rotation = Quaternion.Euler(0, 0, 270);
+			break;
+
+
 		}
-		float degree = Mathf.Atan2 (-horizontalInput, verticalInput) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.Euler (0, 0, degree);
 	}
 
 	void updateMovement() {
