@@ -11,7 +11,7 @@ public class GrabMechanics : MonoBehaviour {
 
 
 	void Update() {
-		print (isGrabbing);
+		//print (isGrabbing);
 		if (grabbableBlock != null && isGrabbing) {
 			grabbableBlock.transform.position = this.transform.position + grabOffset;
 		}
