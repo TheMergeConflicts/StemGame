@@ -23,7 +23,9 @@ public class GrabMechanics : MonoBehaviour {
 			grabOffset = -this.transform.position + grabbableBlock.transform.position;
 			grabbableBlock.GetComponent<ElementBehavior>().setIsGrabbed(true);
 		} else {
-			grabbableBlock.GetComponent<ElementBehavior>().setIsGrabbed(false);
+			if(grabbableBlock!= null){
+				grabbableBlock.GetComponent<ElementBehavior>().setIsGrabbed(false);
+			}
 			isGrabbing = false;
 
 		}
