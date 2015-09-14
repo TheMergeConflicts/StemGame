@@ -5,6 +5,7 @@ public class ElementBehavior : MonoBehaviour {
 	public string elementName;
 	public ElementBehavior[] legalCombination;
 	public ElementBehavior[] newCompound;
+	private bool isGrabbed;
 
 	void OnCollisionEnter2D(Collision2D collider) {
 
@@ -17,6 +18,9 @@ public class ElementBehavior : MonoBehaviour {
 
 	void checkLegalCombination(ElementBehavior checkBehavior) {
 		int i = 0;
+		if (!isGrabbed) {
+			return;
+		}
 		foreach (ElementBehavior ele in legalCombination) {
 
 			if (checkBehavior.elementName == ele.elementName) {
@@ -28,5 +32,8 @@ public class ElementBehavior : MonoBehaviour {
 		}
 	}
 
+	public void setIsGrabbed(bool isGrabbed) {
+		this.isGrabbed = isGrabbed;
+	}
 
 }
