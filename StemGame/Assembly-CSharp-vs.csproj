@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Door.cs" />
+     <Compile Include="Assets\Scripts\Elements\Element.cs" />
      <Compile Include="Assets\Scripts\GameMechanics\ElementBehavior.cs" />
      <Compile Include="Assets\Scripts\GameMechanics\GrabMechanics.cs" />
      <Compile Include="Assets\Scripts\GameMechanics\WalkMechanics.cs" />
