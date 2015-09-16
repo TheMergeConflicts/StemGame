@@ -15,12 +15,14 @@ public class WalkMechanics : MonoBehaviour {
 	private float verticalInput;
 	private GrabMechanics grabMechanics;
 	private Rigidbody2D rigid;
-
-
+	private Animator animator;
+	private int animState;
 
 	void Awake() {
 		rigid = GetComponent<Rigidbody2D> ();
 		grabMechanics = GetComponent<GrabMechanics> ();
+		animator = GetComponent<Animator> ();
+		animState = 0;
 	}
 
 	void Update() {
@@ -35,18 +37,22 @@ public class WalkMechanics : MonoBehaviour {
 		}
 		if (Mathf.Abs (horizontalInput) > 0 && Mathf.Abs (verticalInput) == 0) {
 			if (horizontalInput < 0) {
+				animState = 1;
 				direction = WEST;
 			}
 			else {
+				animState = 1;
 				direction = EAST;
 			}
 		}
 
 		if (Mathf.Abs (verticalInput) > 0 && Mathf.Abs (horizontalInput) == 0) {
 			if (verticalInput < 0) {
+				animState = 0;
 				direction = SOUTH;
 			} else {
 				direction = NORTH;
+				animState = 2;
 			}
 		}
 	}
@@ -63,20 +69,14 @@ public class WalkMechanics : MonoBehaviour {
 
 	void updateRotation() {
 		switch (direction) {
-		case NORTH: 
-			transform.rotation = Quaternion.Euler(0, 0, 0);
-			break;
-
-		case SOUTH:
-			transform.rotation = Quaternion.Euler(0, 0, 180);
-			break;
+		
 
 		case WEST:
-			transform.rotation = Quaternion.Euler(0, 0, 90);
+			transform.localScale = new Vector3(-1,1,1);
 			break;
 
 		case EAST:
-			transform.rotation = Quaternion.Euler(0, 0, 270);
+			transform.localScale = new Vector3(1,1,1);
 			break;
 
 
@@ -89,7 +89,16 @@ public class WalkMechanics : MonoBehaviour {
 		Vector2 goalVec = unitVec * speed * scale;
 
 		rigid.velocity = Vector2.MoveTowards (rigid.velocity, goalVec, Time.deltaTime * walkSmoothing);
-
+		if (animator) { 
+			if (Mathf.Abs(rigid.velocity.x) > 0.5f || Mathf.Abs(rigid.velocity.y) > 0.5f && animState < 3) {
+				animState += 10;
+			} else {
+				if (animState > 2) {
+					animState -= 10;
+				}
+			}
+			animator.SetInteger ("AnimState", animState);
+		}
 	}
 
 
