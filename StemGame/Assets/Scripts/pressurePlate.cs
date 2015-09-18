@@ -20,7 +20,7 @@ public class pressurePlate : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		Debug.Log(123);
-		if(other.gameObject.name == "PlayerCube"){
+		if(other.gameObject.name == "Player"){
 			openDoor();
 
 		}
