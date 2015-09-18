@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\Elements\Element.cs" />
      <Compile Include="Assets\Scripts\GameMechanics\ElementBehavior.cs" />
      <Compile Include="Assets\Scripts\GameMechanics\GrabMechanics.cs" />
+     <Compile Include="Assets\Scripts\GameMechanics\GrabbedBehavior.cs" />
      <Compile Include="Assets\Scripts\GameMechanics\WalkMechanics.cs" />
      <Compile Include="Assets\Scripts\SinglePurposeScripts\FlipImage.cs" />
      <Compile Include="Assets\Scripts\SinglePurposeScripts\Rotatebody.cs" />
