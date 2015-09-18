@@ -10,10 +10,10 @@ public class GrabMechanics : MonoBehaviour {
 	private Transform grabbableBlock; //The current block that can be grabbed
 
 
-	void Update() {
-		//print (isGrabbing);
+	void FixedUpdate() {
+		print (isGrabbing);
 		if (grabbableBlock != null && isGrabbing) {
-			grabbableBlock.transform.position = this.transform.position + grabOffset;
+		    grabbableBlock.transform.position = this.transform.position + grabOffset;
 		}
 	}
 
@@ -33,13 +33,18 @@ public class GrabMechanics : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D collider) {
 		if (collider.tag == grabTag) {
+            
 			grabbableBlock = collider.GetComponent<Transform>();
 		}
 	}
 
 	void OnTriggerExit2D (Collider2D collider) {
 		if (collider.tag == grabTag) {
-			grabbableBlock = null;
+            if (grabbableBlock != null)
+            {
+                grabbableBlock.parent = null;
+            }
+            grabbableBlock = null;
 		}
 	}
 

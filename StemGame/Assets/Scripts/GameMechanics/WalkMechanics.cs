@@ -8,19 +8,19 @@ public class WalkMechanics : MonoBehaviour {
 	public const int WEST = 3;
 
     public Animator animator;
-	public float speed = 5;
+    public GrabMechanics grabMechanics;
+    public float speed = 5;
 	public float walkSmoothing = 5;
 	public int direction = NORTH;
 
 	private float horizontalInput;
 	private float verticalInput;
-	private GrabMechanics grabMechanics;
 	private Rigidbody2D rigid;
 	private int animState;
 
 	void Awake() {
 		rigid = GetComponent<Rigidbody2D> ();
-		grabMechanics = GetComponent<GrabMechanics> ();
+		//grabMechanics = GetComponent<GrabMechanics> ();
 		//animator = GetComponent<Animator> ();
 		animState = 0;
 	}
@@ -31,6 +31,10 @@ public class WalkMechanics : MonoBehaviour {
 	}
 
 	void updateDirection() {
+        if (grabMechanics.getIsGrabbing())
+        {
+            return;
+        }
 		if (Mathf.Abs (horizontalInput) > 0 && Mathf.Abs (verticalInput) == 0) {
 			if (horizontalInput < 0) {
 				animState = 1;

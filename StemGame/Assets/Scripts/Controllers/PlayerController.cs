@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-	private float hInput;
+    public GrabMechanics grabMechanics;
+    private float hInput;
 	private float vInput;
 	private WalkMechanics walkMechanics;
-	private GrabMechanics grabMechanics;
 
 	void Update() {
 		hInput = Input.GetAxisRaw ("Horizontal");
@@ -24,6 +24,6 @@ public class PlayerController : MonoBehaviour {
 
 	void Awake() {
 		walkMechanics = GetComponent<WalkMechanics> ();
-		grabMechanics = GetComponent<GrabMechanics> ();
+		//grabMechanics = GetComponent<GrabMechanics> ();
 	}
 }
