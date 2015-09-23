@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class TempManager : MonoBehaviour {
-	private float temp;
+	public float temp;
 
 	// Use this for initialization
 	void Start () {

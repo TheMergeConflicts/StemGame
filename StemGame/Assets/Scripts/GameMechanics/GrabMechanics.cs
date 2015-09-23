@@ -37,7 +37,10 @@ public class GrabMechanics : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D collider) {
 		if (collider.tag == grabTag) {
             
-			grabbableBlock = collider.GetComponent<Transform>();
+			//Only allows the player to grab an element if it's solid -Nick S
+			if(collider.GetComponent<ElementBehavior>().getCurState() == 0){
+				grabbableBlock = collider.GetComponent<Transform>();
+			}
 		}
 	}
 
