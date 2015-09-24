@@ -6,7 +6,6 @@ public class TempManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		temp = 273.15f;
 
 	}
 	

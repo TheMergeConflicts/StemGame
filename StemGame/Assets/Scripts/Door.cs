@@ -5,7 +5,7 @@ public class Door : MonoBehaviour {
 
 	private SpriteRenderer spriteR;
 	private Collider2D col;
-	public bool open = false;
+	public bool opened = false;
 	private Animator anim;
 
 	// Use this for initialization
@@ -20,8 +20,10 @@ public class Door : MonoBehaviour {
 	
 	}
 
-	public void Open(){
+	public bool Open(){
 		col.enabled = false;
 		anim.SetInteger ("AnimState", 1);
+		opened = true;
+		return opened;
 	}
 }

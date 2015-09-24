@@ -1,12 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TempManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/pressurePlate.cs">
     <Files>
-      <File FileName="Assets\Scripts\Elements\Element.cs" Line="53" Column="26" />
-      <File FileName="Assets\Scripts\GameMechanics\ElementBehavior.cs" Line="72" Column="59" />
-      <File FileName="Assets\Scripts\TempManager.cs" Line="22" Column="1" />
-      <File FileName="Assets\Scripts\GameMechanics\GrabbedBehavior.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameMechanics\GrabMechanics.cs" Line="41" Column="66" />
+      <File FileName="Assets/Scripts/pressurePlate.cs" Line="62" Column="107" />
+      <File FileName="Assets/Scripts/Door.cs" Line="27" Column="16" />
+      <File FileName="Assets/Scripts/TempManager.cs" Line="8" Column="17" />
+      <File FileName="Assets/PanelControl.cs" Line="12" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
