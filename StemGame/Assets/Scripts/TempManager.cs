@@ -3,6 +3,7 @@ using System.Collections;
 
 public class TempManager : MonoBehaviour {
 	public float temp;
+    public float tempSmoothing = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +16,21 @@ public class TempManager : MonoBehaviour {
 	}
 
 	public void setTemp(float temp){
-		temp = temp;
+		this.temp = temp;
 	}
+
+    void adjustTemp(float delta)
+    {
+        temp += delta;
+    }
+
+    public void increaseTemp()
+    {
+        adjustTemp(tempSmoothing);
+    }
+
+    public void decreaseTemp()
+    {
+        adjustTemp(-tempSmoothing);
+    }
 }

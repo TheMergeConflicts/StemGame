@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
     public GrabMechanics grabMechanics;
+    public TempManager tempManager;
     private float hInput;
 	private float vInput;
 	private WalkMechanics walkMechanics;
@@ -20,6 +21,15 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButtonUp ("Jump")) {
 			grabMechanics.grab (false);
 		}
+
+        if (Input.GetButton("TempUp"))
+        {
+            tempManager.increaseTemp();
+        }
+        if (Input.GetButton("TempDown"))
+        {
+            tempManager.decreaseTemp();
+        }
 	}
 
 	void Awake() {
