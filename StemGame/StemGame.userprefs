@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/pressurePlate.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameMechanics\ElementBehavior.cs">
     <Files>
-      <File FileName="Assets/Scripts/pressurePlate.cs" Line="62" Column="107" />
-      <File FileName="Assets/Scripts/Door.cs" Line="27" Column="16" />
-      <File FileName="Assets/Scripts/TempManager.cs" Line="8" Column="17" />
-      <File FileName="Assets/PanelControl.cs" Line="12" Column="1" />
+      <File FileName="Assets\Scripts\GameMechanics\ElementBehavior.cs" Line="79" Column="114" />
+      <File FileName="Assets\Scripts\Elements\Hydrogen.cs" Line="6" Column="2" />
+      <File FileName="Assets\Scripts\Elements\Oxygen.cs" Line="9" Column="26" />
+      <File FileName="Assets\Scripts\Elements\Water.cs" Line="9" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

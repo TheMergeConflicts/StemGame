@@ -76,10 +76,12 @@ public class ElementBehavior : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collider) {
 
-		ElementBehavior collideElement = collider.collider.GetComponent<ElementBehavior> ();
-		if (collideElement != null) {
-			checkLegalCombination(collideElement);
+		if (isGrabbed) {//This ensures that only one resulting element is produced when two blocks are combined -Nick S
+			ElementBehavior collideElement = collider.collider.GetComponent<ElementBehavior> ();
+			if (collideElement != null) {
+				checkLegalCombination (collideElement);
 
+			}
 		}
 	}
 
