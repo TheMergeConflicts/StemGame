@@ -5,7 +5,8 @@ public class ElementBehavior : MonoBehaviour {
 	public string elementName;
 	public ElementBehavior[] legalCombination;
 	public ElementBehavior[] newCompound;
-	private bool isGrabbed;
+	GrabbedBehavior grabbedBehavior;
+	//private bool isGrabbed;
 
 	//Added in Nick P's code, updated temperature logic. Should change element states based on global temp variable. -Nick S
 
@@ -39,6 +40,7 @@ public class ElementBehavior : MonoBehaviour {
 
 	void Start(){
 		TempManager[] tempManagers = FindObjectsOfType(typeof(TempManager)) as TempManager[];
+		grabbedBehavior = GetComponent<GrabbedBehavior> ();
 		if (tempManagers.Length != 0){
 			tempManager = tempManagers[0];
 		}
@@ -76,7 +78,7 @@ public class ElementBehavior : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collider) {
 
-		if (isGrabbed) {//This ensures that only one resulting element is produced when two blocks are combined -Nick S
+		if (grabbedBehavior.getIsGrabbed()) {//This ensures that only one resulting element is produced when two blocks are combined -Nick S
 			ElementBehavior collideElement = collider.collider.GetComponent<ElementBehavior> ();
 			if (collideElement != null) {
 				checkLegalCombination (collideElement);
@@ -87,7 +89,7 @@ public class ElementBehavior : MonoBehaviour {
 
 	void checkLegalCombination(ElementBehavior checkBehavior) {
 		int i = 0;
-		if (!isGrabbed) {
+		if (!grabbedBehavior.getIsGrabbed()) {
 			return;
 		}
 		foreach (ElementBehavior ele in legalCombination) {
@@ -102,7 +104,7 @@ public class ElementBehavior : MonoBehaviour {
 	}
 
 	public void setIsGrabbed(bool isGrabbed) {
-		this.isGrabbed = isGrabbed;
+		//this.isGrabbed = isGrabbed;
 	}
 
 	//getters

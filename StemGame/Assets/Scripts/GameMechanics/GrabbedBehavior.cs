@@ -23,6 +23,7 @@ public class GrabbedBehavior : MonoBehaviour {
         else
         {
             isGrabbed = false;
+			grabMechanics = null;
             rigid.isKinematic = true;
         }
     }
@@ -31,4 +32,8 @@ public class GrabbedBehavior : MonoBehaviour {
     {
         rigid = GetComponent<Rigidbody2D>();
     }
+
+	public bool getIsGrabbed() {
+		return isGrabbed;
+	}
 }
