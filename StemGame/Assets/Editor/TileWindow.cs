@@ -215,6 +215,7 @@ public class TileWindow : EditorWindow
 		}
 	}
 
+	/*
 	[CustomEditor(typeof(GameObject))]
 	public class SceneGUITest : Editor
 	{
@@ -233,8 +234,8 @@ public class TileWindow : EditorWindow
 				SceneView.RepaintAll();
 			}
 		}
-
 	}
+	*/
 
 	void OnGUI()
 	{
