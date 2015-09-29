@@ -9,8 +9,6 @@ public class Oxygen : ElementBehavior {
 		boilingPoint = 90.188f;
 	}
 
-	// Use this for initialization
 
-	// Update is called once per frame
 
 }

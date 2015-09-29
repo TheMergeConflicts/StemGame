@@ -14,7 +14,7 @@ public class ElementBehavior : MonoBehaviour {
 	
 	public enum State {SOLID = 0, LIQUID = 1, GAS = 2};
 	State curState;
-	
+	Animator anim;
 	public float meltingPoint;
 	public float boilingPoint;
 	
@@ -44,6 +44,7 @@ public class ElementBehavior : MonoBehaviour {
 		if (tempManagers.Length != 0){
 			tempManager = tempManagers[0];
 		}
+		anim = gameObject.GetComponent<Animator> ();
 	}
 
 	//Fixed update. Updates temp if it exists, changes states of element.
@@ -60,18 +61,22 @@ public class ElementBehavior : MonoBehaviour {
 			this.curState = State.SOLID;
 			Debug.Log (elementName + " froze!");
 			gameObject.GetComponent<Collider2D> ().enabled = true;
+			anim.SetInteger("state", 0);
 		} else if (curTemp >= meltingPoint && curTemp < boilingPoint && curState != State.LIQUID) {
 			this.curState = State.LIQUID;
 			Debug.Log (elementName + " melted!");
 			gameObject.GetComponent<Collider2D> ().enabled = false;
+			anim.SetInteger("state", 1);
 		} else if (curTemp >= boilingPoint && curState != State.GAS) {
 			this.curState = State.GAS;
 			Debug.Log (elementName + " evaporated!");
 			gameObject.GetComponent<Collider2D> ().enabled = false;
+			anim.SetInteger("state", 2);
 		} else if (curTemp < boilingPoint && curState == State.GAS) {
 			this.curState = State.LIQUID;
 			Debug.Log (elementName + " condensated!");
 			gameObject.GetComponent<Collider2D> ().enabled = false;
+			anim.SetInteger("state", 1);
 		}
 		return this.curState;
 	}

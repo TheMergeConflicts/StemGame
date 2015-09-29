@@ -9,9 +9,6 @@ public class Hydrogen : ElementBehavior {
 		boilingPoint = 20.271f;
 	}
 
-	// Use this for initialization
 
-	
-	// Update is called once per frame
 
 }
