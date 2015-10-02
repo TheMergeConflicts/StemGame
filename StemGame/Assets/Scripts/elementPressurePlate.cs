@@ -42,7 +42,7 @@ public class elementPressurePlate : MonoBehaviour {
 			//panel.SetActive(true);
 		}
 		else{
-			Debug.Log("false");
+			//Debug.Log("false");
 			//panel.SetActive(false);
 		}
 	}

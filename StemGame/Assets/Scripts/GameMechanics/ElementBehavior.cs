@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ElementBehavior : MonoBehaviour {
 	public string elementName;
+    public Collider2D solidCollider;
 	public ElementBehavior[] legalCombination;
 	public ElementBehavior[] newCompound;
 	GrabbedBehavior grabbedBehavior;
@@ -60,31 +61,31 @@ public class ElementBehavior : MonoBehaviour {
 		if (curTemp < meltingPoint && curState != State.SOLID) {
 			this.curState = State.SOLID;
 			Debug.Log (elementName + " froze!");
-			gameObject.GetComponent<Collider2D> ().enabled = true;
+			solidCollider.enabled = true;
 			anim.SetInteger("state", 0);
 		} else if (curTemp >= meltingPoint && curTemp < boilingPoint && curState != State.LIQUID) {
 			this.curState = State.LIQUID;
 			Debug.Log (elementName + " melted!");
-			gameObject.GetComponent<Collider2D> ().enabled = false;
+			solidCollider.enabled = false;
 			anim.SetInteger("state", 1);
 		} else if (curTemp >= boilingPoint && curState != State.GAS) {
 			this.curState = State.GAS;
 			Debug.Log (elementName + " evaporated!");
-			gameObject.GetComponent<Collider2D> ().enabled = false;
+			solidCollider.enabled = false;
 			anim.SetInteger("state", 2);
 		} else if (curTemp < boilingPoint && curState == State.GAS) {
 			this.curState = State.LIQUID;
 			Debug.Log (elementName + " condensated!");
-			gameObject.GetComponent<Collider2D> ().enabled = false;
+			solidCollider.enabled = false;
 			anim.SetInteger("state", 1);
 		}
 		return this.curState;
 	}
 
-	void OnCollisionEnter2D(Collision2D collider) {
+	void OnTriggerEnter2D(Collider2D collider) {
 
 		if (grabbedBehavior.getIsGrabbed()) {//This ensures that only one resulting element is produced when two blocks are combined -Nick S
-			ElementBehavior collideElement = collider.collider.GetComponent<ElementBehavior> ();
+			ElementBehavior collideElement = collider.GetComponent<ElementBehavior> ();
 			if (collideElement != null) {
 				checkLegalCombination (collideElement);
 
