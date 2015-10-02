@@ -37,7 +37,7 @@ public class pressurePlate : MonoBehaviour {
 		}
 		else{
 			Debug.Log("faklse");
-			panel.SetActive(false);
+			//panel.SetActive(false);
 		}
 	}
 

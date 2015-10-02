@@ -12,19 +12,30 @@ public class GrabbedBehavior : MonoBehaviour {
     {
         isGrabbed = true;
         this.grabMechanics = grabMechanics;
+        rigid.isKinematic = false;
     }
 
     void Update()
     {
         if (isGrabbed && grabMechanics.getIsGrabbing())
         {
-            rigid.isKinematic = false ;
+            
+            
         }
         else
         {
             isGrabbed = false;
 			grabMechanics = null;
             rigid.isKinematic = true;
+            transform.parent = null;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (isGrabbed)
+        {
+           rigid.velocity = grabMechanics.transform.parent.GetComponent<Rigidbody2D>().velocity;
         }
     }
 
