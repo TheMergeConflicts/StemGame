@@ -14,6 +14,7 @@ public class ElementBehavior : MonoBehaviour {
 	TempManager tempManager = null;
 	
 	public enum State {SOLID = 0, LIQUID = 1, GAS = 2};
+	protected bool sublime;
 	State curState;
 	Animator anim;
 	public float meltingPoint;
@@ -28,15 +29,17 @@ public class ElementBehavior : MonoBehaviour {
 		meltingPoint = 1f;
 		boilingPoint = 100f;
 		curTemp = 0f;
+		sublime = false;
 	}
 
 	//parametered constructor
-	public ElementBehavior(string elementName, State curState, float freezingPoint, float meltingPoint, float boilingPoint, float curTemp){
+	public ElementBehavior(string elementName, State curState, float freezingPoint, float meltingPoint, float boilingPoint, float curTemp, bool sublime){
 		this.elementName = elementName;
 		this.curState = curState;
 		this.meltingPoint = meltingPoint;
 		this.boilingPoint = boilingPoint;
 		this.curTemp = curTemp;
+		this.sublime = sublime;
 	}
 
 	void Start(){
@@ -63,7 +66,7 @@ public class ElementBehavior : MonoBehaviour {
 			Debug.Log (elementName + " froze!");
 			solidCollider.enabled = true;
 			anim.SetInteger("state", 0);
-		} else if (curTemp >= meltingPoint && curTemp < boilingPoint && curState != State.LIQUID) {
+		} else if (!sublime && curTemp >= meltingPoint && curTemp < boilingPoint && curState != State.LIQUID) {
 			this.curState = State.LIQUID;
 			Debug.Log (elementName + " melted!");
 			solidCollider.enabled = false;
