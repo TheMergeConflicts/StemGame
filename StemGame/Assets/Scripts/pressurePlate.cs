@@ -22,7 +22,7 @@ public class pressurePlate : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		cam = Camera.main;
-		text = panel.transform.Find ("Text").gameObject.GetComponent<Text> ();
+		text = panel.transform.Find ("plateText").gameObject.GetComponent<Text> ();
 		plateOccupied = false;
 		spriteR = GetComponent<SpriteRenderer> ();
 		door = doorObject.GetComponent<Door> ();
@@ -36,7 +36,7 @@ public class pressurePlate : MonoBehaviour {
 			panel.SetActive(true);
 		}
 		else{
-			Debug.Log("faklse");
+			Debug.Log("false");
 			//panel.SetActive(false);
 		}
 	}
