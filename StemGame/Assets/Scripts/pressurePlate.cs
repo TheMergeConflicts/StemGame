@@ -43,7 +43,7 @@ public class pressurePlate : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 
-		if (other.gameObject.tag == "Grabbable") {
+		if (other.gameObject.tag == "Grabbable" || other.gameObject.tag == "Player") {
 			plateOccupied = true;
 			if (other.gameObject.name == elementNeeded) { 
 				SetupUI(true);
@@ -72,7 +72,7 @@ public class pressurePlate : MonoBehaviour {
 	}
 
 	void OnTriggerExit2D(Collider2D other){
-		if (other.gameObject.tag == "Grabbable") {
+		if (other.gameObject.tag == "Grabbable" || other.gameObject.tag == "Player") {
 			plateOccupied = false;
 		}
 	}
