@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class elementPressurePlate : MonoBehaviour {
 	
 	
-	//public GameObject panel;
+	public GameObject panel;
 	private Text text;
 	public string elementNeeded;
 	public float offsetX;
@@ -22,7 +22,7 @@ public class elementPressurePlate : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		cam = Camera.main;
-		//text = panel.transform.Find ("Text").gameObject.GetComponent<Text> ();
+		text = panel.transform.Find ("Text").gameObject.GetComponent<Text> ();
 		plateOccupied = false;
 		spriteR = GetComponent<SpriteRenderer> ();
 		//door = doorObject.GetComponent<Door> ();
@@ -39,11 +39,11 @@ public class elementPressurePlate : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(plateOccupied){
-			//panel.SetActive(true);
+			panel.SetActive(true);
 		}
 		else{
 			//Debug.Log("false");
-			//panel.SetActive(false);
+			panel.SetActive(false);
 		}
 	}
 	
@@ -55,8 +55,12 @@ public class elementPressurePlate : MonoBehaviour {
 			if (other.gameObject.name.Contains(elementNeeded)) { 
 				Debug.Log("right object");
 				performAction();
-				
-			} 
+                Destroy(other.gameObject);
+                plateOccupied = false;
+            }  else
+            {
+                text.text = elementNeeded + " needed";
+            }
 		}
 	}
 	

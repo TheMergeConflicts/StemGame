@@ -3,11 +3,11 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class fireStarterPlate : MonoBehaviour {
-	
-	
-	//public GameObject panel;
-	private Text text;
-	public string elementNeeded;
+
+
+    public GameObject panel;
+    private Text text;
+    public string elementNeeded;
 	public float offsetX;
 	public float offsetY;
 	
@@ -22,7 +22,7 @@ public class fireStarterPlate : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		cam = Camera.main;
-		//text = panel.transform.Find ("Text").gameObject.GetComponent<Text> ();
+		text = panel.transform.Find ("Text").gameObject.GetComponent<Text> ();
 		plateOccupied = false;
 		spriteR = GetComponent<SpriteRenderer> ();
 		//door = doorObject.GetComponent<Door> ();
@@ -39,11 +39,11 @@ public class fireStarterPlate : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(plateOccupied){
-			//panel.SetActive(true);
+			
 		}
 		else{
 			//Debug.Log("false");
-			//panel.SetActive(false);
+			panel.SetActive(false);
 		}
 	}
 	
@@ -56,9 +56,13 @@ public class fireStarterPlate : MonoBehaviour {
 				Debug.Log("right object");
 				performAction();
                 Destroy(other.gameObject);
-				
-			} 
-		}
+                plateOccupied = false;
+            }
+            else
+            {
+                text.text = elementNeeded + " needed";
+            }
+        }
 	}
 	
 
