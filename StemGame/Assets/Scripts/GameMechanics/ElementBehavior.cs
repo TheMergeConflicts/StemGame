@@ -66,6 +66,7 @@ public class ElementBehavior : MonoBehaviour {
 			Debug.Log (elementName + " froze!");
 			solidCollider.enabled = true;
 			anim.SetInteger("state", 0);
+            shiftPlayer();
 		} else if (!sublime && curTemp >= meltingPoint && curTemp < boilingPoint && curState != State.LIQUID) {
 			this.curState = State.LIQUID;
 			Debug.Log (elementName + " melted!");
@@ -95,6 +96,33 @@ public class ElementBehavior : MonoBehaviour {
 			}
 		}
 	}
+
+    void shiftPlayer()
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        Vector3 checkDistacne = transform.position - player.transform.position;
+        if (Mathf.Abs(checkDistacne.x) < 1.0f && Mathf.Abs(checkDistacne.y) < 1.0f)
+        {
+            if (!Physics2D.Raycast(transform.position + new Vector3(0, transform.localScale.y / 2f + .1f, 0), Vector2.up, 1.5f, 1))
+            {
+                player.transform.position = transform.position + Vector3.up;
+
+            }
+            else if (!Physics2D.Raycast(transform.position + new Vector3(0, -transform.localScale.y / 2f - .1f, 0),  -Vector2.up, 1.5f, 1))
+            {
+                player.transform.position = transform.position - Vector3.up;
+            }
+            else if (!Physics2D.Raycast(transform.position + new Vector3(-transform.localScale.x / 2f - .1f, 0, 0), Vector2.left, 1.5f, 1))
+            {
+                player.transform.position = transform.position + Vector3.left;
+            }
+            else if (Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / 2f + .1f, 0, 0), -Vector2.left, 1.5f, 1))
+            {
+                player.transform.position = transform.position - Vector3.left;
+            }
+        }
+
+    }
 
 	void checkLegalCombination(ElementBehavior checkBehavior) {
 		int i = 0;
@@ -133,10 +161,11 @@ public class ElementBehavior : MonoBehaviour {
 	public float getBoilingPoint(){
 		return boilingPoint;
 	}
-	
-	public float getCurTemp(){
-		return curTemp;
-	}
+
+    public float getCurTemp()
+    {
+        return curTemp;
+    }
 	
 	
 	//setters
