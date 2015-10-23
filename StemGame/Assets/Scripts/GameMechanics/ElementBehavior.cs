@@ -19,6 +19,8 @@ public class ElementBehavior : MonoBehaviour {
 	Animator anim;
 	public float meltingPoint;
 	public float boilingPoint;
+
+    public float activationTemp;
 	
 	float curTemp;
 
@@ -28,13 +30,15 @@ public class ElementBehavior : MonoBehaviour {
 		curState = State.SOLID;
 		meltingPoint = 1f;
 		boilingPoint = 100f;
+        activationTemp = 0.0f;
 		curTemp = 0f;
 		sublime = false;
 	}
 
 	//parametered constructor
-	public ElementBehavior(string elementName, State curState, float freezingPoint, float meltingPoint, float boilingPoint, float curTemp, bool sublime){
+	public ElementBehavior(string elementName, State curState, float freezingPoint, float meltingPoint, float boilingPoint, float curTemp, bool sublime, float activationTemp){
 		this.elementName = elementName;
+        this.activationTemp = activationTemp;
 		this.curState = curState;
 		this.meltingPoint = meltingPoint;
 		this.boilingPoint = boilingPoint;
@@ -131,7 +135,7 @@ public class ElementBehavior : MonoBehaviour {
 		}
 		foreach (ElementBehavior ele in legalCombination) {
 
-			if (checkBehavior.elementName == ele.elementName) {
+			if (curTemp >= newCompound[i].gameObject.GetComponent<ElementBehavior>().activationTemp &&checkBehavior.elementName == ele.elementName) {
 				Destroy(checkBehavior.gameObject);
 				Instantiate(newCompound[i].gameObject, checkBehavior.transform.position, new Quaternion());
 				Destroy (this.gameObject);

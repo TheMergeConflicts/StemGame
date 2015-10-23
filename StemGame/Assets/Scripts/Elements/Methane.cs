@@ -7,6 +7,7 @@ public class Methane : ElementBehavior {
 		elementName = "Methane";
 		meltingPoint = 90.7f;
 		boilingPoint = 111.66f;
+        activationTemp = 800;
 	}
 
 }
