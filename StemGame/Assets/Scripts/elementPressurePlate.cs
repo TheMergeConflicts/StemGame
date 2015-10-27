@@ -38,19 +38,13 @@ public class elementPressurePlate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(plateOccupied){
-			panel.SetActive(true);
-		}
-		else{
-			//Debug.Log("false");
-			panel.SetActive(false);
-		}
+		
 	}
 	
 	void OnTriggerEnter2D(Collider2D other){
 		
 		if (other.gameObject.tag == "Grabbable") {
-			Debug.Log("NICK");
+			
 			plateOccupied = true;
 			if (other.gameObject.name.Contains(elementNeeded)) { 
 				Debug.Log("right object");
@@ -59,6 +53,7 @@ public class elementPressurePlate : MonoBehaviour {
                 plateOccupied = false;
             }  else
             {
+                
                 text.text = elementNeeded + " needed";
             }
 		}
@@ -68,7 +63,8 @@ public class elementPressurePlate : MonoBehaviour {
 	
 	void OnTriggerExit2D(Collider2D other){
 		if (other.gameObject.tag == "Grabbable") {
-			plateOccupied = false;
+      
+            plateOccupied = false;
 		}
 	}
 	

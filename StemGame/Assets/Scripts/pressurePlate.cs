@@ -31,15 +31,7 @@ public class pressurePlate : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
-		if(plateOccupied){
-			panel.SetActive(true);
-		}
-		else{
-			Debug.Log("false");
-			panel.SetActive(false);
-		}
-	}
+	
 
 	void OnTriggerEnter2D(Collider2D other){
 
@@ -76,6 +68,7 @@ public class pressurePlate : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D other){
 		if (other.gameObject.tag == "Grabbable" || other.gameObject.tag == "Player") {
 			plateOccupied = false;
+            text.text = "";
 		}
 	}
 
