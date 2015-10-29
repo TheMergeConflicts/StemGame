@@ -4,7 +4,7 @@ using System.Collections;
 
 public class HintUI : MonoBehaviour {
     Text text;
-    ArrayList elements;
+    public  ArrayList elements;
     public GameObject[] obs;
     string water = "Hydrogen + Oxygen = Water;";
     string CO2 = "Carbon + Oxygen = CO2;";
@@ -37,7 +37,8 @@ public class HintUI : MonoBehaviour {
 
     void composeHint()
     {
-        if(elements.Contains("Hydrogen") && elements.Contains("Carbon"))
+       
+        if (elements.Contains("Hydrogen") && elements.Contains("Carbon"))
         {
             hint += (" "+methane);
         }
