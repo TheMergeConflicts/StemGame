@@ -5,11 +5,11 @@ using System.Collections;
 public class HintUI : MonoBehaviour {
     Text text;
     ArrayList elements;
-    GameObject[] obs;
+    public GameObject[] obs;
     string water = "Hydrogen + Oxygen = Water;";
     string CO2 = "Carbon + Oxygen = CO2;";
     string methane = "Carbon + Hydrogen = Methane;";
-    string hint;
+    public string hint;
     void Start () {
         text = GetComponent<Text>();
         obs = GameObject.FindGameObjectsWithTag("Grabbable");
