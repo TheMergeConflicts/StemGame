@@ -55,7 +55,10 @@
      <Compile Include="Assets\Scripts\Elements\Methane.cs" />
      <Compile Include="Assets\Scripts\Elements\Oxygen.cs" />
      <Compile Include="Assets\Scripts\Elements\Water.cs" />
+     <Compile Include="Assets\Scripts\ExplodingWall.cs" />
+     <Compile Include="Assets\Scripts\FireControlPanel.cs" />
      <Compile Include="Assets\Scripts\FireScript.cs" />
+     <Compile Include="Assets\Scripts\Footsteps.cs" />
      <Compile Include="Assets\Scripts\GameMechanics\ElementBehavior.cs" />
      <Compile Include="Assets\Scripts\GameMechanics\GrabMechanics.cs" />
      <Compile Include="Assets\Scripts\GameMechanics\GrabbedBehavior.cs" />
@@ -66,6 +69,8 @@
      <Compile Include="Assets\Scripts\SinglePurposeScripts\FlipImage.cs" />
      <Compile Include="Assets\Scripts\SinglePurposeScripts\Rotatebody.cs" />
      <Compile Include="Assets\Scripts\TempManager.cs" />
+     <Compile Include="Assets\Scripts\TextureScale.cs" />
+     <Compile Include="Assets\Scripts\WallPart.cs" />
      <Compile Include="Assets\Scripts\WaterPit.cs" />
      <Compile Include="Assets\Scripts\elementPressurePlate.cs" />
      <Compile Include="Assets\Scripts\fireStarterPlate.cs" />
