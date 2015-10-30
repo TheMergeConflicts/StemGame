@@ -48,7 +48,6 @@ public class elementPressurePlate : MonoBehaviour {
 			plateOccupied = true;
 			if (other.gameObject.name.Contains(elementNeeded)) { 
 				Debug.Log("right object");
-                gameObject.GetComponent<AudioSource>().Play();
 				performAction();
                 Destroy(other.gameObject);
                 plateOccupied = false;
