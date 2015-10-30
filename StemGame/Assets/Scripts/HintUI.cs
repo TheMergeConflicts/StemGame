@@ -6,9 +6,9 @@ public class HintUI : MonoBehaviour {
     Text text;
     public  ArrayList elements;
     public GameObject[] obs;
-    string water = "Hydrogen + Oxygen = Water;";
-    string CO2 = "Carbon + Oxygen = CO2;";
-    string methane = "Carbon + Hydrogen = Methane;";
+    string water = "Hydrogen + Oxygen = Water; Water + COLD = ICE\n";
+    string CO2 = "Carbon + Oxygen = CO2;\n";
+    string methane = "(Carbon + Hydrogen) + HEAT = Methane; Methane + fire = BIG FIRE;\n";
     public string hint;
     void Start () {
         text = GetComponent<Text>();
