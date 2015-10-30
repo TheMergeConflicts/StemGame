@@ -13,8 +13,8 @@ public class pressurePlate : MonoBehaviour {
 
 
 	private SpriteRenderer spriteR;
-	public GameObject doorObject; 
-	private Door door;
+	public GameObject[] doorObjects; 
+	private Door[] doors;
 	private bool doorOpened;
 	private bool plateOccupied;
 	private Camera cam;
@@ -25,9 +25,15 @@ public class pressurePlate : MonoBehaviour {
 		text = panel.transform.Find ("Text").gameObject.GetComponent<Text> ();
 		plateOccupied = false;
 		spriteR = GetComponent<SpriteRenderer> ();
-		door = doorObject.GetComponent<Door> ();
+		SetDoors ();
 
+	}
 
+	void SetDoors(){
+		doors = new Door[doorObjects.Length];
+		for(int i = 0; i < doorObjects.Length; i++){
+			doors[i] = doorObjects[i].GetComponent<Door>();
+		}
 	}
 
 	// Update is called once per frame
@@ -37,10 +43,9 @@ public class pressurePlate : MonoBehaviour {
 
 		if (other.gameObject.tag == "Grabbable" || other.gameObject.tag == "Player") {
 			plateOccupied = true;
-			if (other.gameObject.name == elementNeeded) { 
+			if (other.gameObject.name.Contains(elementNeeded)) { 
 				SetupUI(true);
 				openDoor ();
-
             }
             else
             {
@@ -73,14 +78,22 @@ public class pressurePlate : MonoBehaviour {
 	}
 
 	void openDoor(){
-		doorOpened = door.Open ();
+
+
+		for(int i = 0; i < doorObjects.Length; i++){
+			doors[i].Open();
+		}
 		spriteR.color = Color.green;
 	}
 
 	void OnDrawGizmos(){
-		if (doorObject != null) {
+		if (doorObjects.Length > 0) {
 			Gizmos.color = Color.red;
-			Gizmos.DrawLine (gameObject.transform.position, doorObject.transform.position);
+			for(int i = 0; i < doorObjects.Length; i++){
+				Gizmos.DrawLine (gameObject.transform.position, doorObjects[i].transform.position);
+			}
+
+
 		}
 	}
 }
