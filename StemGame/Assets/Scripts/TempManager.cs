@@ -15,28 +15,47 @@ public class TempManager : MonoBehaviour {
 	}
 	void Update(){
 		temp = temperatureSlider.value;
-		float iceStrength = -.1f * (temp-100);
-		float iceColorStrength = (.3f) * (1-(temp / 100f));
-		Color iceColor = iceTexture.GetComponent<Renderer> ().material.color;
 
 
 
-		if (temp < 100.0f) {
-			iceDistorter.GetComponent<Renderer> ().material.SetFloat ("_Refraction", iceStrength);
-			Color iceModifiedColor = new Color (iceColor.r, iceColor.g, iceColor.b, iceColorStrength);
-			iceTexture.GetComponent<Renderer> ().material.color = iceModifiedColor;
-		} else { // to make sure screen ice is completely gone if we skip the melting stage
-			iceDistorter.GetComponent<Renderer> ().material.SetFloat ("_Refraction", 0f);
-			Color iceModifiedColor = new Color (iceColor.r, iceColor.g, iceColor.b, 0f);
-			iceTexture.GetComponent<Renderer> ().material.color = iceModifiedColor;
+		//deal with platform stuff Win vs Mac
+		RuntimePlatform curSys = Application.platform;
+		if (curSys == RuntimePlatform.WindowsPlayer || curSys == RuntimePlatform.WindowsEditor
+			|| curSys == RuntimePlatform.WindowsWebPlayer) {
+		
+		
+			float iceStrength = -.1f * (temp - 100);
+			float iceColorStrength = (.3f) * (1 - (temp / 100f));
+			Color iceColor = iceTexture.GetComponent<Renderer> ().material.color;
+
+
+			print (Application.platform);
+
+
+			
+			if (temp < 100.0f) {
+				iceDistorter.GetComponent<Renderer> ().material.SetFloat ("_Refraction", iceStrength);
+				Color iceModifiedColor = new Color (iceColor.r, iceColor.g, iceColor.b, iceColorStrength);
+				iceTexture.GetComponent<Renderer> ().material.color = iceModifiedColor;
+			} else { // to make sure screen ice is completely gone if we skip the melting stage
+				iceDistorter.GetComponent<Renderer> ().material.SetFloat ("_Refraction", 0f);
+				Color iceModifiedColor = new Color (iceColor.r, iceColor.g, iceColor.b, 0f);
+				iceTexture.GetComponent<Renderer> ().material.color = iceModifiedColor;
+			}
+
+			if (temp > 300.0f) {
+				heatDistort.enableEmission = true;
+			} else {
+				heatDistort.enableEmission = false;
+			}
+		
+
+		} else {
+			iceTexture.GetComponent<Renderer>().enabled=false;
+			iceDistorter.GetComponent<Renderer>().enabled = false;
+			heatDistort.GetComponent<Renderer>().enabled = false;
+
 		}
-        if(temp > 300.0f)
-        {
-            heatDistort.enableEmission = true;
-        } else
-        {
-            heatDistort.enableEmission = false;
-        }
 	}
 	// Update is called once per frame
 	public float getTemp(){
