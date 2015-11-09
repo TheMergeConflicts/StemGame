@@ -7,6 +7,8 @@ public class ElementBehavior : MonoBehaviour {
 	public ElementBehavior[] legalCombination;
 	public ElementBehavior[] newCompound;
 	GrabbedBehavior grabbedBehavior;
+
+    public AudioSource audioS;
 	//private bool isGrabbed;
 
 	//Added in Nick P's code, updated temperature logic. Should change element states based on global temp variable. -Nick S
@@ -53,7 +55,8 @@ public class ElementBehavior : MonoBehaviour {
 			tempManager = tempManagers[0];
 		}
 		anim = gameObject.GetComponent<Animator> ();
-	}
+        audioS = gameObject.GetComponent<AudioSource>();
+    }
 
 	//Fixed update. Updates temp if it exists, changes states of element.
 	void FixedUpdate(){
@@ -71,22 +74,30 @@ public class ElementBehavior : MonoBehaviour {
 			solidCollider.enabled = true;
 			anim.SetInteger("state", 0);
             shiftPlayer();
-		} else if (!sublime && curTemp >= meltingPoint && curTemp < boilingPoint && curState != State.LIQUID) {
+            audioS.clip = Resources.Load("SFX/StemGameFreeze") as AudioClip;
+            audioS.Play();
+        } else if (!sublime && curTemp >= meltingPoint && curTemp < boilingPoint && curState != State.LIQUID) {
 			this.curState = State.LIQUID;
 			Debug.Log (elementName + " melted!");
 			solidCollider.enabled = false;
 			anim.SetInteger("state", 1);
-		} else if (curTemp >= boilingPoint && curState != State.GAS) {
+            audioS.clip = Resources.Load("SFX/StemGameMelt") as AudioClip;
+            audioS.Play();
+        } else if (curTemp >= boilingPoint && curState != State.GAS) {
 			this.curState = State.GAS;
 			Debug.Log (elementName + " evaporated!");
 			solidCollider.enabled = false;
 			anim.SetInteger("state", 2);
-		} else if (curTemp < boilingPoint && curState == State.GAS) {
+            audioS.clip = Resources.Load("SFX/StemGameMelt") as AudioClip;
+            audioS.Play();
+        } else if (curTemp < boilingPoint && curState == State.GAS) {
 			this.curState = State.LIQUID;
 			Debug.Log (elementName + " condensated!");
 			solidCollider.enabled = false;
 			anim.SetInteger("state", 1);
-		}
+            audioS.clip = Resources.Load("SFX/StemGameMelt") as AudioClip;
+            audioS.Play();
+        }
 		return this.curState;
 	}
 
