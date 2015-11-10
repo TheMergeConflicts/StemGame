@@ -11,6 +11,7 @@ public class FireControlPanel : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        panel = GameObject.Find("HintPanel2");
         text = panel.transform.Find("Text").gameObject.GetComponent<Text>();
     }
 	
