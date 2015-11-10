@@ -21,7 +21,8 @@ public class elementPressurePlate : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		cam = Camera.main;
+        panel = GameObject.Find("HintPanel2");
+        cam = Camera.main;
 		text = panel.transform.Find ("Text").gameObject.GetComponent<Text> ();
 		plateOccupied = false;
 		spriteR = GetComponent<SpriteRenderer> ();
