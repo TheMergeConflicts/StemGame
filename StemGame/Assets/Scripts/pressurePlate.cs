@@ -21,6 +21,7 @@ public class pressurePlate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        panel = GameObject.Find("HintPanel2");
 		cam = Camera.main;
 		text = panel.transform.Find ("Text").gameObject.GetComponent<Text> ();
 		plateOccupied = false;
@@ -44,7 +45,7 @@ public class pressurePlate : MonoBehaviour {
 		if (other.gameObject.tag == "Grabbable" || other.gameObject.tag == "Player") {
 			plateOccupied = true;
 			if (other.gameObject.name.Contains(elementNeeded)) { 
-				SetupUI(true);
+				
 				openDoor ();
             }
             else
@@ -54,21 +55,6 @@ public class pressurePlate : MonoBehaviour {
         }
 	}
 
-	void SetupUI(bool correctItem){
-		Vector3 UIpos = cam.WorldToViewportPoint(transform.position);
-		Rect rect_old = text.rectTransform.rect;
-		Rect rect_new = new Rect(UIpos.x, UIpos.y, rect_old.width, rect_old.height);
-		panel.GetComponent<RectTransform>().anchoredPosition = new Vector2 (UIpos.x + offsetX, UIpos.y + offsetY);
-		if(correctItem){
-
-			text.text = "Success";
-
-		}
-		else{
-			text.text = "Need " + elementNeeded;
-		}
-
-	}
 
 	void OnTriggerExit2D(Collider2D other){
 		if (other.gameObject.tag == "Grabbable" || other.gameObject.tag == "Player") {

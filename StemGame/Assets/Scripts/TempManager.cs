@@ -29,7 +29,7 @@ public class TempManager : MonoBehaviour {
 			Color iceColor = iceTexture.GetComponent<Renderer> ().material.color;
 
 
-			print (Application.platform);
+			//print (Application.platform);
 
 
 			
