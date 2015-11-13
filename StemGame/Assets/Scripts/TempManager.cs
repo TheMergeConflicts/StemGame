@@ -13,7 +13,8 @@ public class TempManager : MonoBehaviour {
 	public GameObject hotScreenColor;
 	// Use this for initialization
 	void Start () {
-
+		coldScreenColor = GameObject.Find ("ColdScreen");
+		hotScreenColor = GameObject.Find ("HotScreen");
 	}
 	void Update(){
 		temp = temperatureSlider.value;
