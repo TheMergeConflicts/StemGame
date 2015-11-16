@@ -5,8 +5,6 @@ Project("{56AE0A5A-BAFE-8897-1FA8-78B203F3BA19}") = "StemGame", "Assembly-CSharp
 EndProject
 Project("{56AE0A5A-BAFE-8897-1FA8-78B203F3BA19}") = "StemGame", "Assembly-CSharp-Editor.csproj", "{141B6163-02C2-70AD-13D8-962D50E32CFF}"
 EndProject
-Project("{56AE0A5A-BAFE-8897-1FA8-78B203F3BA19}") = "StemGame", "Assembly-UnityScript.unityproj", "{CFE433B8-DD78-10B1-1375-634EF706E00C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,15 +19,11 @@ Global
 		{141B6163-02C2-70AD-13D8-962D50E32CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{141B6163-02C2-70AD-13D8-962D50E32CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{141B6163-02C2-70AD-13D8-962D50E32CFF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CFE433B8-DD78-10B1-1375-634EF706E00C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CFE433B8-DD78-10B1-1375-634EF706E00C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CFE433B8-DD78-10B1-1375-634EF706E00C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CFE433B8-DD78-10B1-1375-634EF706E00C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-								GlobalSection(MonoDevelopProperties) = preSolution
+															GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
