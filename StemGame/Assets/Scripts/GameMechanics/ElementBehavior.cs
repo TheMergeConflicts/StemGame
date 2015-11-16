@@ -148,7 +148,9 @@ public class ElementBehavior : MonoBehaviour {
 
 			if (curTemp >= newCompound[i].gameObject.GetComponent<ElementBehavior>().activationTemp &&checkBehavior.elementName == ele.elementName) {
 				Destroy(checkBehavior.gameObject);
-				Instantiate(newCompound[i].gameObject, checkBehavior.transform.position, new Quaternion());
+                GameObject temp;
+				Instantiate(temp = newCompound[i].gameObject, checkBehavior.transform.position, new Quaternion());
+                temp.transform.localScale = checkBehavior.transform.localScale;
 				Destroy (this.gameObject);
 			}
 			i++;
