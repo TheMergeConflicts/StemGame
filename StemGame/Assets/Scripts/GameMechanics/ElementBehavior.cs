@@ -156,8 +156,9 @@ public class ElementBehavior : MonoBehaviour {
 				Destroy(checkBehavior.gameObject);
                 GameObject temp;
 				Instantiate(temp = newCompound[i].gameObject, checkBehavior.transform.position, new Quaternion());
-                temp.transform.localScale = checkBehavior.desiredLocalScale;
-				Destroy (this.gameObject);
+                //temp.transform.localScale = checkBehavior.desiredLocalScale;
+                temp.transform.localScale = new Vector3(.9f, .9f, 1);
+                Destroy (this.gameObject);
 			}
 			i++;
 		}

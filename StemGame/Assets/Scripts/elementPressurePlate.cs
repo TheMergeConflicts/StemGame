@@ -17,12 +17,11 @@ public class elementPressurePlate : MonoBehaviour {
 	WaterPit[] affectedObjects;
 	private int numAffectedObjects;
 	private bool plateOccupied;
-	private Camera cam;
+    private bool locked;
 	
 	// Use this for initialization
 	void Start () {
         panel = GameObject.Find("HintPanel2");
-        cam = Camera.main;
 		text = panel.transform.Find ("Text").gameObject.GetComponent<Text> ();
 		plateOccupied = false;
 		spriteR = GetComponent<SpriteRenderer> ();
@@ -44,7 +43,7 @@ public class elementPressurePlate : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D other){
 		
-		if (other.gameObject.tag == "Grabbable") {
+		if (other.gameObject.tag == "Grabbable" && !locked) {
 			
 			plateOccupied = true;
 			if (other.gameObject.name.Contains(elementNeeded)) { 
@@ -53,6 +52,7 @@ public class elementPressurePlate : MonoBehaviour {
                 Destroy(other.gameObject);
                 gameObject.GetComponent<AudioSource>().Play();
                 plateOccupied = false;
+                locked = true;
             }  else
             {
                 
