@@ -6,6 +6,7 @@ public class ElementBehavior : MonoBehaviour {
     public Collider2D solidCollider;
 	public ElementBehavior[] legalCombination;
 	public ElementBehavior[] newCompound;
+    public Vector3 desiredLocalScale = Vector3.zero;
 	GrabbedBehavior grabbedBehavior;
 
     public AudioSource audioS;
@@ -56,6 +57,11 @@ public class ElementBehavior : MonoBehaviour {
 		}
 		anim = gameObject.GetComponent<Animator> ();
         audioS = gameObject.GetComponent<AudioSource>();
+        if (desiredLocalScale.magnitude <= .001)
+        {
+            desiredLocalScale = transform.localScale;
+        }
+       // print(desiredLocalScale);
     }
 
 	//Fixed update. Updates temp if it exists, changes states of element.
@@ -150,7 +156,7 @@ public class ElementBehavior : MonoBehaviour {
 				Destroy(checkBehavior.gameObject);
                 GameObject temp;
 				Instantiate(temp = newCompound[i].gameObject, checkBehavior.transform.position, new Quaternion());
-                temp.transform.localScale = checkBehavior.transform.localScale;
+                temp.transform.localScale = checkBehavior.desiredLocalScale;
 				Destroy (this.gameObject);
 			}
 			i++;
