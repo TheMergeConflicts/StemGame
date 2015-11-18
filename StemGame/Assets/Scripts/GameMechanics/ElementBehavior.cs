@@ -126,7 +126,7 @@ public class ElementBehavior : MonoBehaviour {
     {
         GameObject player = GameObject.FindWithTag("Player");
         Vector3 checkDistacne = transform.position - player.transform.position;
-        if (Mathf.Abs(checkDistacne.x) < .7f && Mathf.Abs(checkDistacne.y) < .7f && !player.GetComponent<WalkMechanics>().isFrozen)
+        if (Mathf.Abs(checkDistacne.x) < .5f && Mathf.Abs(checkDistacne.y) < .5f && !player.GetComponent<WalkMechanics>().isFrozen)
         {
             bool checkSetPlayerFrozen = frozenPlayer == null;
             frozenPlayer = player.transform;
