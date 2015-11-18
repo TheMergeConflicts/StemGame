@@ -50,6 +50,7 @@ public class elementPressurePlate : MonoBehaviour {
 				Debug.Log("right object");
 				performAction();
                 Destroy(other.gameObject);
+                gameObject.GetComponent<AudioSource>().pitch = 1.5f;
                 gameObject.GetComponent<AudioSource>().Play();
                 plateOccupied = false;
                 locked = true;

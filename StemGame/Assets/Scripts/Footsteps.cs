@@ -42,7 +42,7 @@ public class Footsteps : MonoBehaviour
                     break;
             }
             audioS.pitch = Random.Range(0.95f, 1.05f);
-            audioS.volume = Random.Range(0.27f, 0.33f);
+            audioS.volume = Random.Range(0.17f, 0.23f);
             audioS.Play();
             coolDown = 0.1f;
         }

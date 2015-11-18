@@ -6,6 +6,7 @@ public class FireScript : MonoBehaviour {
     float startTime;
     SpriteRenderer render;
     public fireStarterPlate plate;
+    public AudioSource fireS, debrisS;
     Vector3 originalPos;
     bool fired;
 	void Start () {
@@ -36,6 +37,7 @@ public class FireScript : MonoBehaviour {
         {
             Debug.Log("EXPLODE");
             target.GetComponent<ExplodingWall>().Explode();
+            debrisS.Play();
         }
     }
 
@@ -48,6 +50,7 @@ public class FireScript : MonoBehaviour {
             transform.localScale = new Vector2(.5f, .5f);
             transform.position = new Vector3(originalPos.x - .5f, originalPos.y, originalPos.z);
             GetComponent<Collider2D>().enabled = false;
+            fireS.clip = Resources.Load("SFX/StemLabLittleFire") as AudioClip;
         } else
         {
             fired = true;
@@ -55,6 +58,9 @@ public class FireScript : MonoBehaviour {
             transform.position = new Vector3(originalPos.x + 1, originalPos.y, originalPos.z);
             GetComponent<Collider2D>().enabled = true;
             plate.burn();
+            fireS.clip = Resources.Load("SFX/StemLabBigFire") as AudioClip;
         }
+        if(!fireS.isPlaying)
+            fireS.Play();
     }
 }
