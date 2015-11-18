@@ -141,14 +141,14 @@ public class ElementBehavior : MonoBehaviour {
     {
         if (isFrozen && frozenPlayer != null)
         {
-            frozenPlayer.GetComponentInChildren<SpriteRenderer>().color += new Color (0, 0, 35, 0);
+            frozenPlayer.GetComponentInChildren<SpriteRenderer>().color = new Color (0, 30, 255, 255);
             frozenPlayer.GetComponent<PlayerController>().enabled = false;
             frozenPlayer.GetComponent<Collider2D>().enabled = false;
             frozenPlayer.position = this.transform.position;
         } else if (frozenPlayer != null)
         {
             frozenPlayer.GetComponent<Collider2D>().enabled = true;
-            frozenPlayer.GetComponentInChildren<SpriteRenderer>().color -= new Color(0, 0, 35, 0);
+            frozenPlayer.GetComponentInChildren<SpriteRenderer>().color = new Color(255, 255, 255, 255);
             frozenPlayer.GetComponent<PlayerController>().enabled = true;
             frozenPlayer = null;
         }
