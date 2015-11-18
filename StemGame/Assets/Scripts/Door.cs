@@ -20,8 +20,12 @@ public class Door : MonoBehaviour {
 	
 	}
 
-	public bool Open(){
-		col.enabled = false;
+    public bool Open() {
+        if (!opened) {
+            gameObject.GetComponent<AudioSource>().volume = 0.35f;
+            gameObject.GetComponent<AudioSource>().Play();
+        }
+        col.enabled = false;
 		anim.SetInteger ("AnimState", 1);
 		opened = true;
 		return opened;

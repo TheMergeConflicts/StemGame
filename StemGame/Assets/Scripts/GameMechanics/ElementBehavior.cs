@@ -159,6 +159,7 @@ public class ElementBehavior : MonoBehaviour {
                 //temp.transform.localScale = checkBehavior.desiredLocalScale;
                 temp.transform.localScale = new Vector3(.9f, .9f, 1);
                 Destroy (this.gameObject);
+                Instantiate(Resources.Load("ReactionSFX") as GameObject);
 			}
 			i++;
 		}

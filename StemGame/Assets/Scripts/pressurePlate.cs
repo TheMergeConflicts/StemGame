@@ -27,6 +27,7 @@ public class pressurePlate : MonoBehaviour {
 		plateOccupied = false;
 		spriteR = GetComponent<SpriteRenderer> ();
 		SetDoors ();
+        doorOpened = false;
 
 	}
 
@@ -47,6 +48,10 @@ public class pressurePlate : MonoBehaviour {
 			if (other.gameObject.name.Contains(elementNeeded)) { 
 				
 				openDoor ();
+                if (!doorOpened) {
+                    gameObject.GetComponent<AudioSource>().Play();
+                }
+                doorOpened = true;
             }
             else
             {

@@ -48,6 +48,7 @@
      <Compile Include="Assets\LevelSelect_UIManager.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\DestroySelf.cs" />
      <Compile Include="Assets\Scripts\Door.cs" />
      <Compile Include="Assets\Scripts\Elements\Carbon.cs" />
      <Compile Include="Assets\Scripts\Elements\CarbonDioxide.cs" />
