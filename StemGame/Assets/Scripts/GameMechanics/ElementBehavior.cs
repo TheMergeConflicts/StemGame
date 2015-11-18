@@ -8,6 +8,7 @@ public class ElementBehavior : MonoBehaviour {
 	public ElementBehavior[] newCompound;
     public Vector3 desiredLocalScale = Vector3.zero;
 	GrabbedBehavior grabbedBehavior;
+    Transform frozenPlayer;
 
     public AudioSource audioS;
 	//private bool isGrabbed;
@@ -86,6 +87,7 @@ public class ElementBehavior : MonoBehaviour {
 			this.curState = State.LIQUID;
 			Debug.Log (elementName + " melted!");
 			solidCollider.enabled = false;
+            setPlayerFrozen(false);
 			anim.SetInteger("state", 1);
             audioS.clip = Resources.Load("SFX/StemGameMelt") as AudioClip;
             audioS.Play();
@@ -93,6 +95,7 @@ public class ElementBehavior : MonoBehaviour {
 			this.curState = State.GAS;
 			Debug.Log (elementName + " evaporated!");
 			solidCollider.enabled = false;
+            setPlayerFrozen(false);
 			anim.SetInteger("state", 2);
             audioS.clip = Resources.Load("SFX/StemGameMelt") as AudioClip;
             audioS.Play();
@@ -100,6 +103,7 @@ public class ElementBehavior : MonoBehaviour {
 			this.curState = State.LIQUID;
 			Debug.Log (elementName + " condensated!");
 			solidCollider.enabled = false;
+            setPlayerFrozen(false);
 			anim.SetInteger("state", 1);
             audioS.clip = Resources.Load("SFX/StemGameMelt") as AudioClip;
             audioS.Play();
@@ -122,27 +126,32 @@ public class ElementBehavior : MonoBehaviour {
     {
         GameObject player = GameObject.FindWithTag("Player");
         Vector3 checkDistacne = transform.position - player.transform.position;
-        if (Mathf.Abs(checkDistacne.x) < 1.0f && Mathf.Abs(checkDistacne.y) < 1.0f)
+        if (Mathf.Abs(checkDistacne.x) < .7f && Mathf.Abs(checkDistacne.y) < .7f && !player.GetComponent<WalkMechanics>().isFrozen)
         {
-            if (!Physics2D.Raycast(transform.position + new Vector3(0, transform.localScale.y / 2f + .1f, 0), Vector2.up, 1.5f, 1))
-            {
-                player.transform.position = transform.position + Vector3.up;
-
-            }
-            else if (!Physics2D.Raycast(transform.position + new Vector3(0, -transform.localScale.y / 2f - .1f, 0),  -Vector2.up, 1.5f, 1))
-            {
-                player.transform.position = transform.position - Vector3.up;
-            }
-            else if (!Physics2D.Raycast(transform.position + new Vector3(-transform.localScale.x / 2f - .1f, 0, 0), Vector2.left, 1.5f, 1))
-            {
-                player.transform.position = transform.position + Vector3.left;
-            }
-            else if (Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / 2f + .1f, 0, 0), -Vector2.left, 1.5f, 1))
-            {
-                player.transform.position = transform.position - Vector3.left;
-            }
+            bool checkSetPlayerFrozen = frozenPlayer == null;
+            frozenPlayer = player.transform;
+            player.GetComponent<PlayerController>().enabled = false;
+            if(checkSetPlayerFrozen) 
+              setPlayerFrozen(true);
         }
 
+    }
+
+    public void setPlayerFrozen(bool isFrozen)
+    {
+        if (isFrozen && frozenPlayer != null)
+        {
+            frozenPlayer.GetComponentInChildren<SpriteRenderer>().color += new Color (0, 0, 35, 0);
+            frozenPlayer.GetComponent<PlayerController>().enabled = false;
+            frozenPlayer.GetComponent<Collider2D>().enabled = false;
+            frozenPlayer.position = this.transform.position;
+        } else if (frozenPlayer != null)
+        {
+            frozenPlayer.GetComponent<Collider2D>().enabled = true;
+            frozenPlayer.GetComponentInChildren<SpriteRenderer>().color -= new Color(0, 0, 35, 0);
+            frozenPlayer.GetComponent<PlayerController>().enabled = true;
+            frozenPlayer = null;
+        }
     }
 
 	void checkLegalCombination(ElementBehavior checkBehavior) {

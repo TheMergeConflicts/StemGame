@@ -12,6 +12,7 @@ public class WalkMechanics : MonoBehaviour {
     public float speed = 5;
 	public float walkSmoothing = 5;
 	public int direction = NORTH;
+    public bool isFrozen;
 
 	private float horizontalInput;
 	private float verticalInput;
