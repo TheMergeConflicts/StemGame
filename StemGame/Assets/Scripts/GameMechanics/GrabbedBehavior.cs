@@ -23,6 +23,7 @@ public class GrabbedBehavior : MonoBehaviour {
         if (isGrabbed && grabMechanics.getIsGrabbing())
         {
             checkDistance();
+            predictCollisionWithPlayer();
 
         }
         else
@@ -31,6 +32,23 @@ public class GrabbedBehavior : MonoBehaviour {
 			grabMechanics = null;
             rigid.isKinematic = true;
             transform.parent = null;
+        }
+    }
+
+    void predictCollisionWithPlayer()
+    {
+        if (isGrabbed)
+        {
+            Vector3 checkDistance = grabMechanics.transform.position - this.transform.position;
+            if (checkDistance.magnitude < offset.magnitude)
+            {
+                Vector3 predictionVector = checkDistance - new Vector3(rigid.velocity.x, rigid.velocity.y, 0);
+                if (predictionVector.magnitude < checkDistance.magnitude)
+                {
+                    transform.position = grabMechanics.transform.position - offset;
+                }
+            }
+
         }
     }
 
