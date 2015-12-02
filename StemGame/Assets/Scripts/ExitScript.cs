@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ExitScript : MonoBehaviour {
     public string level;
-
+    public int nextLevel;
 	int completedLevel;
 
 	void Start(){
@@ -13,7 +13,11 @@ public class ExitScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D target)
     {
         if (target.gameObject.tag.Equals("Player")){
-			PlayerPrefs.SetInt("LevelsCompleted", ++completedLevel);
+            if(nextLevel > completedLevel) { PlayerPrefs.SetInt("LevelsCompleted", nextLevel); } else
+            {
+                PlayerPrefs.SetInt("LevelsCompleted",completedLevel);
+            }
+			
             Application.LoadLevel(level);
         }
     }
