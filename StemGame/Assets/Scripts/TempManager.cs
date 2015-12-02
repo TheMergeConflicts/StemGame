@@ -21,7 +21,7 @@ public class TempManager : MonoBehaviour {
 		
 		float iceStrength = -.1f * (temp - 100);
 		float iceColorStrength = (.3f) * (1 - (temp / 100f));
-		float hotColorStrength = (.3f) * (1 - (300 - temp / 300f));
+		float hotColorStrength = (.3f) * (((temp + 300) - 300) / 700);//(.3f) * (1 - (300 - temp / 300f));
 		Color iceColor = iceTexture.GetComponent<Renderer> ().material.color;
 		Color coldScreenColorColor = coldScreenColor.GetComponent<Renderer> ().material.color;
 		Color hotScreenColorColor = hotScreenColor.GetComponent<Renderer> ().material.color;
