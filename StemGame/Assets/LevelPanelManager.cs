@@ -10,7 +10,7 @@ public class LevelPanelManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		levelsCompleted = PlayerPrefs.GetInt ("LevelsCompleted");
+		levelsCompleted = PlayerPrefs.GetInt ("LevelsCompleted") - 1;
 		SetLockImages ();
 	}
 

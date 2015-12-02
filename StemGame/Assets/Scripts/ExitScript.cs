@@ -17,7 +17,7 @@ public class ExitScript : MonoBehaviour {
             {
                 PlayerPrefs.SetInt("LevelsCompleted",completedLevel);
             }
-			
+            PlayerPrefs.Save();
             Application.LoadLevel(level);
         }
     }

@@ -8,7 +8,11 @@ public class MainMenu_UIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		PlayerPrefs.SetInt ("LevelsCompleted", 0);
+        if (!PlayerPrefs.HasKey("LevelsCompleted"))
+        {
+
+            PlayerPrefs.SetInt("LevelsCompleted", 1);
+        }
 	}
 	
 	public void HandleStartBtn(){
