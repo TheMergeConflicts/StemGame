@@ -9,6 +9,10 @@ public class GrabbedBehavior : MonoBehaviour {
     private Vector3 offset;
 
 
+    /// <summary>
+    /// sets the grab mechanics to true when called and takes care of all the 
+    /// </summary>
+    /// <param name="grabMechanics"></param>
     public void setGrabMechanics(GrabMechanics grabMechanics) 
     {
         isGrabbed = true;
@@ -35,6 +39,11 @@ public class GrabbedBehavior : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// This helps with block passing through the player when colliding with a wall glitch
+    /// It stops the block from moving toward the player if the player is not moving, but still adding a 
+    /// force to the block
+    /// </summary>
     void predictCollisionWithPlayer()
     {
         if (isGrabbed)
@@ -52,6 +61,10 @@ public class GrabbedBehavior : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// This is used to check the distance the block is away from the player.
+    /// If it is too far away, it will disconnect the player from the block.
+    /// </summary>
     void checkDistance()
     {
         Vector3 checkDistance = grabMechanics.transform.position - this.transform.position;
@@ -62,6 +75,9 @@ public class GrabbedBehavior : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     void FixedUpdate()
     {
         if (isGrabbed)

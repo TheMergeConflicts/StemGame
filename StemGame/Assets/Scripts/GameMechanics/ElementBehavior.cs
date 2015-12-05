@@ -74,6 +74,10 @@ public class ElementBehavior : MonoBehaviour {
 	}
 
 	//state machine
+    /// <summary>
+    /// updates the state of the element based on the temperature of the map
+    /// </summary>
+    /// <returns></returns>
 	public State updateState(){
 		if (curTemp < meltingPoint && curState != State.SOLID) {
 			this.curState = State.SOLID;
@@ -111,6 +115,10 @@ public class ElementBehavior : MonoBehaviour {
 		return this.curState;
 	}
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="collider"></param>
 	void OnTriggerEnter2D(Collider2D collider) {
 
 		if (grabbedBehavior.getIsGrabbed()) {//This ensures that only one resulting element is produced when two blocks are combined -Nick S
@@ -122,6 +130,9 @@ public class ElementBehavior : MonoBehaviour {
 		}
 	}
 
+    /// <summary>
+    /// 
+    /// </summary>
     void shiftPlayer()
     {
         GameObject player = GameObject.FindWithTag("Player");
@@ -137,6 +148,10 @@ public class ElementBehavior : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="isFrozen"></param>
     public void setPlayerFrozen(bool isFrozen)
     {
         if (isFrozen && frozenPlayer != null)
@@ -154,6 +169,10 @@ public class ElementBehavior : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="checkBehavior"></param>
 	void checkLegalCombination(ElementBehavior checkBehavior) {
 		int i = 0;
 		if (!grabbedBehavior.getIsGrabbed()) {
@@ -174,6 +193,10 @@ public class ElementBehavior : MonoBehaviour {
 		}
 	}
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="isGrabbed"></param>
 	public void setIsGrabbed(bool isGrabbed) {
 		//this.isGrabbed = isGrabbed;
 	}
@@ -196,6 +219,10 @@ public class ElementBehavior : MonoBehaviour {
 		return boilingPoint;
 	}
 
+    /// <summary>
+    /// Retrieves the current tempertature of teh 
+    /// </summary>
+    /// <returns></returns>
     public float getCurTemp()
     {
         return curTemp;
@@ -204,26 +231,51 @@ public class ElementBehavior : MonoBehaviour {
 	
 	//setters
 	
+    /// <summary>
+    /// Sets the name of the element
+    /// </summary>
+    /// <param name="elementName"></param>
+    /// <returns></returns>
 	public string setName(string elementName){
 		this.elementName = elementName;
 		return this.elementName;
 	}
 	
+    /// <summary>
+    /// Sets the current State of the element
+    /// </summary>
+    /// <param name="curState"></param>
+    /// <returns></returns>
 	public State setCurState(State curState){
 		this.curState = curState;
 		return this.curState;
 	}
 	
+    /// <summary>
+    /// Sets the melting point of the element
+    /// </summary>
+    /// <param name="meltingPoint"></param>
+    /// <returns></returns>
 	public float setMeltingPoint(float meltingPoint){
 		this.meltingPoint = meltingPoint;
 		return this.meltingPoint;
 	}
 	
+    /// <summary>
+    /// Set the boiling point of the element
+    /// </summary>
+    /// <param name="boilingPoint"></param>
+    /// <returns></returns>
 	public float setBoilingPoint(float boilingPoint){
 		this.boilingPoint = boilingPoint;
 		return this.boilingPoint;
 	}
 	
+    /// <summary>
+    /// Sets the current temperature for the element
+    /// </summary>
+    /// <param name="curTemp"></param>
+    /// <returns></returns>
 	public float setCurTemp(float curTemp){
 		this.curTemp = curTemp;
 		return this.curTemp;

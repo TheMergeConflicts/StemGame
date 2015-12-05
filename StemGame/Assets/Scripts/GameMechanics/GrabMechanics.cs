@@ -14,6 +14,11 @@ public class GrabMechanics : MonoBehaviour {
 		
 	}
 
+    /// <summary>
+    /// This method is used to check if the player can grab a block they are next to. If the player is in front of a block
+    /// and they have pushed the grab button
+    /// </summary>
+    /// <param name="grabInput"></param>
 	public void grab(bool grabInput) {
 		if (grabbableBlock != null) {
 			isGrabbing = grabInput;
@@ -31,6 +36,11 @@ public class GrabMechanics : MonoBehaviour {
 		}
 	}
 
+    /// <summary>
+    /// There is a trigger box attached to the front of the player. If a grabbable block is placed in it, it will
+    /// add it as a possible block that the player can grab
+    /// </summary>
+    /// <param name="collider"></param>
 	void OnTriggerEnter2D (Collider2D collider) {
 		if (collider.tag == grabTag) {
             
@@ -41,6 +51,10 @@ public class GrabMechanics : MonoBehaviour {
 		}
 	}
 
+    /// <summary>
+    /// Removes the grabbable block that is currently set
+    /// </summary>
+    /// <param name="collider"></param>
 	void OnTriggerExit2D (Collider2D collider) {
 		if (collider.tag == grabTag) {
             if (grabbableBlock != null)

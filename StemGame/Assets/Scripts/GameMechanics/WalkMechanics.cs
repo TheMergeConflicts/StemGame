@@ -31,6 +31,9 @@ public class WalkMechanics : MonoBehaviour {
 		updateDirection ();
 	}
 
+    /// <summary>
+    /// Based on the direction of the player's input, the direction of the character will be updated
+    /// </summary>
 	void updateDirection() {
         if (grabMechanics.getIsGrabbing())
         {
@@ -68,6 +71,9 @@ public class WalkMechanics : MonoBehaviour {
 		this.verticalInput = vInput;
 	}
 
+    /// <summary>
+    /// Based on the inputs of the player, the velocity of the character will be updated
+    /// </summary>
 	void updateMovement() {
 		float scale = Mathf.Max (Mathf.Abs(horizontalInput), Mathf.Abs(verticalInput));
 		Vector2 unitVec = new Vector2 (horizontalInput, verticalInput).normalized;
