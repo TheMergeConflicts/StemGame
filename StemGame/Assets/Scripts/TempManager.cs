@@ -2,6 +2,14 @@
 using System.Collections;
 using UnityEngine.UI;
 
+
+/// <summary>
+/// This class is responsible for any temperature slider
+/// manipulations, and the resulting effects on the 
+/// elements and the visual presentation.
+/// </summary>
+
+
 public class TempManager : MonoBehaviour {
 	public float temp;
     public float tempSmoothing = 1;
@@ -12,10 +20,22 @@ public class TempManager : MonoBehaviour {
 	public GameObject coldScreenColor;
 	public GameObject hotScreenColor;
 	// Use this for initialization
+
+	/// <summary>
+	/// Initializes the cold and hot overlay screens
+	/// by finding them in the game.
+	/// </summary>
 	void Start () {
 		coldScreenColor = GameObject.Find ("ColdScreen");
 		hotScreenColor = GameObject.Find ("HotScreen");
 	}
+
+	/// <summary>
+	/// This is called every frame. It checks the temperature
+	/// value from the slider, calculates the intensity of the
+	/// special effects based on the temperature, and
+	/// applies them to the screen.
+	/// </summary>
 	void Update(){
 		temp = temperatureSlider.value;
 		
@@ -85,25 +105,46 @@ public class TempManager : MonoBehaviour {
 		}
 	}
 	// Update is called once per frame
+
+	/// <summary>
+	/// Gets the temp.
+	/// </summary>
+	/// <returns>The temp.</returns>
+
 	public float getTemp(){
 		return temp;
 	}
 
+	/// <summary>
+	/// Sets the temp.
+	/// </summary>
+	/// <param name="temp">Temp.</param>
 	public void setTemp(float temp){
 		this.temp = temp;
 	}
 
+	/// <summary>
+	/// Adjusts the temp.
+	/// </summary>
+	/// <param name="delta">Delta.</param>
     void adjustTemp(float delta)
     {
         temp += delta;
     }
 
+	/// <summary>
+	/// Increases the temp.
+	/// </summary>
     public void increaseTemp()
     {
 		//adjustTemp (tempSmoothing);
 		//temperature.value = temp;
     }
 
+
+	/// <summary>
+	/// Decreases the temp.
+	/// </summary>
     public void decreaseTemp()
     {
         //adjustTemp(-tempSmoothing);
