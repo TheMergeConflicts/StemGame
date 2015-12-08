@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Destroys the wall game object and instantiates a series of wall pieces
+/// with a random selection of forces
+/// </summary>
 public class ExplodingWall : MonoBehaviour {
     public GameObject[] parts;
 	// Use this for initialization

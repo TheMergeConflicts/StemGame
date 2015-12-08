@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
+/// <summary>
+/// This class scans the scene and prepares a text message for the user
+/// based on the elements in the scene
+/// </summary>
 public class HintUI : MonoBehaviour {
     Text text;
     public  ArrayList elements;
@@ -10,6 +13,9 @@ public class HintUI : MonoBehaviour {
     string CO2 = "Carbon + Oxygen = CO2;\n";
     string methane = "(Carbon + Hydrogen) + HEAT = Methane; Methane + fire = BIG FIRE;\n";
     public string hint;
+    /// <summary>
+    /// finds all the Grabbable (element) objects in the scene
+    /// </summary>
     void Start () {
         text = GetComponent<Text>();
         obs = GameObject.FindGameObjectsWithTag("Grabbable");
@@ -19,11 +25,10 @@ public class HintUI : MonoBehaviour {
         text.text = hint;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	    
-	}
-
+	
+    /// <summary>
+    /// Composes an arraylist of elements present in the scene, removing duplicates
+    /// </summary>
     void findElements()
     {
         foreach (GameObject obj in obs)
@@ -34,7 +39,10 @@ public class HintUI : MonoBehaviour {
             }
         }
     }
-
+    /// <summary>
+    /// Prepares a text message based on the available compounds that
+    /// can be created, and writes the message to the UI canvas
+    /// </summary>
     void composeHint()
     {
        

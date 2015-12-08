@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+/// <summary>
+/// This script activates the fire script
+/// </summary>
 public class FireControlPanel : MonoBehaviour {
     bool isPlayer;
     public FireScript flame;
@@ -9,13 +11,18 @@ public class FireControlPanel : MonoBehaviour {
     private Text text;
     private bool plateOccupied;
 
-    // Use this for initialization
+    /// <summary>
+    /// Finds the appropriate UI components to display a hint
+    /// </summary>
     void Start () {
         panel = GameObject.Find("HintPanel2");
         text = panel.transform.Find("Text").gameObject.GetComponent<Text>();
     }
 	
-	// Update is called once per frame
+	/// <summary>
+    /// If the player is in the trigger, and presses space
+    /// then the fire is activated
+    /// </summary>
 	void Update () {
 	    if (isPlayer && Input.GetKey(KeyCode.Space))
         {
@@ -23,7 +30,11 @@ public class FireControlPanel : MonoBehaviour {
         }
         
     }
-
+    /// <summary>
+    /// If the collider has the tag player, set isPlayer to true
+    /// and display a hint
+    /// </summary>
+    /// <param name="target">2D collider object</param>
     void OnTriggerEnter2D(Collider2D target)
     {
         text.text = "Press Space";
@@ -34,7 +45,10 @@ public class FireControlPanel : MonoBehaviour {
             
         }
     }
-
+    /// <summary>
+    /// Sets isplayer to false, deactivates hint
+    /// </summary>
+    /// <param name="target">2D collider object</param>
     void OnTriggerExit2D(Collider2D target)
     {
         if (target.tag.Equals("Player"))

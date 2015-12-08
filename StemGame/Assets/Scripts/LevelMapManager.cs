@@ -1,13 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
+/// <summary>
+/// This class helps the player select specific science zones, and opens up the level
+/// selection panel for each zone
+/// </summary>
 public class LevelMapManager : MonoBehaviour {
 
 	enum MODE { ZONES, PANEL};
     MODE mode = MODE.ZONES;
     GameObject panel;
-	// Update is called once per frame
+	/// <summary>
+    /// Uses a switch statement to go between the panel and the map
+    /// The ZONES state uses raycasting to select a map zone square,
+    /// and switches to the PANEL state, which opens the level selection panel
+    /// </summary>
 	void Update () {
         switch (mode)
         {

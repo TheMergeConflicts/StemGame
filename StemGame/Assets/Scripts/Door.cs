@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Trigers the door open animation and disables the door collider
+/// </summary>
 public class Door : MonoBehaviour {
 
 	private SpriteRenderer spriteR;
@@ -15,10 +17,8 @@ public class Door : MonoBehaviour {
 		anim = gameObject.GetComponent<Animator> ();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+
 
     public bool Open() {
         if (!opened) {

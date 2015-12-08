@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// When activated, triggers the fill animation. Uses the temperature to determine when
+/// to disable the collider
+/// </summary>
 public class WaterPit : MonoBehaviour {
 	Animator anim;
 	Collider2D collider;

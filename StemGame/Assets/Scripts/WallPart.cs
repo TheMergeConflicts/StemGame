@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Causes the game object to become more transparent over time, then self destruct
+/// </summary>
 public class WallPart : MonoBehaviour {
     float life = 4;
 	// Use this for initialization
