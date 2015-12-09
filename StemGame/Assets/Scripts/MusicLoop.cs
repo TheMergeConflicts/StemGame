@@ -13,7 +13,10 @@ public class MusicLoop : MonoBehaviour {
         audioS = gameObject.GetComponent<AudioSource>();
 	}
 	
-	// Update is called once per frame
+
+    /// <summary>
+    /// Alternates between the intro track and the loop track after the first iteration
+    /// </summary>
 	void Update () {
         if (isIntro && !audioS.isPlaying)
         {

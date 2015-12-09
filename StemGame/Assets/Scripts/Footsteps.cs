@@ -22,6 +22,10 @@ public class Footsteps : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Plays a randomized footstep sound twice per animation cycle
+    /// </summary>
     public void Step()
     {
         if (audioS != null && coolDown <= 0)
