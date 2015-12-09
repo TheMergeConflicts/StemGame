@@ -2,9 +2,10 @@
 using System.Collections;
 using UnityEngine.UI;
 
+/// <summary>
+/// Pressure plate.
+/// </summary>
 public class pressurePlate : MonoBehaviour {
-
-
 	public GameObject panel;
 	private Text text;
 	public string elementNeeded;
@@ -31,15 +32,15 @@ public class pressurePlate : MonoBehaviour {
 
 	}
 
+	/// <summary>
+	/// Initialize the doors array.
+	/// </summary>
 	void SetDoors(){
 		doors = new Door[doorObjects.Length];
 		for(int i = 0; i < doorObjects.Length; i++){
 			doors[i] = doorObjects[i].GetComponent<Door>();
 		}
 	}
-
-	// Update is called once per frame
-	
 
 	void OnTriggerEnter2D(Collider2D other){
 
@@ -68,23 +69,25 @@ public class pressurePlate : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Opens the door.
+	/// </summary>
 	void openDoor(){
-
-
 		for(int i = 0; i < doorObjects.Length; i++){
 			doors[i].Open();
 		}
 		spriteR.color = Color.green;
 	}
 
+	/// <summary>
+	/// Draws a line between a pressure plate and the doors linked
+	/// </summary>
 	void OnDrawGizmos(){
 		if (doorObjects.Length > 0) {
 			Gizmos.color = Color.red;
 			for(int i = 0; i < doorObjects.Length; i++){
 				Gizmos.DrawLine (gameObject.transform.position, doorObjects[i].transform.position);
 			}
-
-
 		}
 	}
 }
